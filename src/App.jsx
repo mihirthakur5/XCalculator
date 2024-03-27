@@ -4,6 +4,7 @@ import styles from "./App.module.css";
 function App() {
   const [value, setValue] = useState("");
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -18,6 +19,9 @@ function App() {
 
   const calculate = (e) => {
     e.preventDefault();
+    if ((e.target.value = "=")) {
+      setError("Error");
+    }
     setResult(eval(value));
   };
 
@@ -28,7 +32,7 @@ function App() {
         <form action="">
           <div className={styles.textInput}>
             <input type="text" value={value} />
-            <p>{result}</p>
+            <p>{result ? result : error}</p>
           </div>
           <div>
             <button name="7" onClick={handleClick}>
